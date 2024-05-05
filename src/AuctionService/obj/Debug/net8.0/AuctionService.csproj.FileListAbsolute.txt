@@ -105,3 +105,10 @@
 /Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/obj/Debug/net8.0/AuctionService.genruntimeconfig.cache
 /Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/obj/Debug/net8.0/ref/AuctionService.dll
 /Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/obj/Debug/net8.0/AuctionService.sourcelink.json
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/MassTransit.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/MassTransit.Abstractions.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/MassTransit.RabbitMqTransport.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/RabbitMQ.Client.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/Contracts.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/Contracts.pdb
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/MassTransit.EntityFrameworkCoreIntegration.dll
