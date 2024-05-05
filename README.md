@@ -37,4 +37,4 @@ dotnet watch
 # Returns to the root folder
 cd .. 
 # Once each service is configured, start the Docker containers from the root folder.
-docker-compose up -d
+docker compose up -d
