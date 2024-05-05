@@ -1,40 +1,56 @@
 # Build a Microservices App with .NET and NextJS
 
-This project is a microservices application built from scratch using .NET for the backend. The backend is initially designed around two main services: `AuctionService` and `SearchService`, implementing modern microservices architecture patterns and advanced data handling techniques. Additional services are planned and will be integrated into the architecture to extend the application's functionality.
+This project is a comprehensive microservices application constructed from scratch using .NET for the backend, incorporating modern architecture patterns and advanced data handling techniques.
 
 ## Current Services
 
-- **AuctionService**: Handles all CRUD operations for auctions. It is connected to PostgreSQL, featuring migrations, DTOs, and seed data to ensure the database is properly initialized.
-- **SearchService**: Responsible for filtering and searching data, leveraging MongoDB to handle complex queries efficiently.
+- **AuctionService**: Manages all CRUD operations for auctions, connected to PostgreSQL with support for migrations, DTOs, and seed data for proper database initialization.
+- **SearchService**: Filters and searches data, using MongoDB to handle complex queries efficiently.
+
+## Message Handling with RabbitMQ
+
+To ensure robust inter-service communication, the system utilizes RabbitMQ for messaging:
+- **Message Queueing**: RabbitMQ handles message delivery between services, ensuring that messages are queued and persistently stored until processed.
+- **Resilience**: Implements retry mechanisms where messages are retried every 5 seconds in case of service downtime.
+- **Error Handling**: `AuctionCreatedFaultConsumer` handles exceptions like `System.ArgumentException`, correcting and reissuing the message to ensure reliability.
+
+## Data Model Validation
+
+To enhance data integrity, the following entities have been introduced:
+- `modelBuilder.AddInboxStateEntity();`
+- `modelBuilder.AddOutboxMessageEntity();`
+- `modelBuilder.AddOutboxStateEntity();`
+
+These additions ensure that messages are correctly managed in scenarios of temporary service unavailability, utilizing inbox and outbox patterns to handle incoming and outgoing communications securely.
 
 ## Planned Services
 
-- **PaymentService**: Will handle all transactional operations.
-- **NotificationService**: To manage real-time user notifications and communications.
-
-## Resilience and Secure Connections
-
-The system uses **Polly**, a resiliency and transcendence library, to manage retry policies on HTTP connections between services. This ensures that temporary failures in one service do not affect the availability of the other:
-
-- **Polly Retry Policies:** Configured to handle transient HTTP errors and continue trying every 3 seconds until the service is available again, which is critical for continuous operation in a microservices environment.
+- **BiddingService**: To manage auction bidding processes.
+- **NotificationService**: To handle real-time user notifications and communication.
 
 ## Technologies Used
 
 - **.NET Core**
 - **PostgreSQL**
 - **MongoDB**
+- **RabbitMQ**
 - **Docker**
+
+## Resilience and Secure Connections
+
+The application employs **Polly**, a resilience and transient-fault-handling library, to implement retry policies for HTTP connections between services:
+- **Polly Retry Policies**: Configured to manage transient HTTP errors by retrying every 3 seconds until the service is available again, essential for maintaining continuous operation in a distributed environment.
 
 ## Installation
 
-To run this project, you will need Docker installed on your machine. Follow these steps to start the services:
+To deploy this project, ensure Docker is installed on your machine. Follow these steps to get started:
 
 ```bash
 # Clone the repository
 git clone https://github.com/rcarlosjorge/DotNet-NextJS-Microservices.git
-# Before starting the Docker containers, you must access each service and perform the necessary configuration or initialization tasks.
+# Navigate to each service directory and perform necessary configurations or initialization tasks.
 dotnet watch
-# Returns to the root folder
-cd .. 
-# Once each service is configured, start the Docker containers from the root folder.
+# Return to the root directory
+cd ..
+# Start the Docker containers from the root directory.
 docker compose up -d
