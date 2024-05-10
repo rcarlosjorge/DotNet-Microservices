@@ -112,3 +112,11 @@
 /Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/obj/Debug/net8.0/AuctionService.pdb
 /Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/obj/Debug/net8.0/AuctionService.genruntimeconfig.cache
 /Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/obj/Debug/net8.0/ref/AuctionService.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
