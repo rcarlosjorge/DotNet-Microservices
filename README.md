@@ -14,6 +14,7 @@ The application leverages **Duende IdentityServer** for robust authentication an
 - **AuctionService**: Manages CRUD operations for auctions, connected to PostgreSQL. It includes features like migrations, DTOs, and seed data for proper database initialization.
 - **SearchService**: Utilizes MongoDB to efficiently handle complex queries for filtering and searching data.
 - **IdentityService**: Dedicated to managing user identities and access controls. This service interfaces with Duende IdentityServer and ASP.NET Identity to offer a seamless and secure user experience.
+- **GatewayService**: Acts as the primary point of entry for all client requests, routing them to the appropriate services through **YARP (Yet Another Reverse Proxy)**. This simplifies the architecture, enhances security, and facilitates load balancing by serving as a dynamic reverse proxy.
 
 ## Message Handling with RabbitMQ
 
@@ -43,22 +44,21 @@ These entities help handle scenarios of temporary service unavailability by mana
 - **MongoDB**
 - **RabbitMQ**
 - **Docker**
-- - **DUENDE**
+- **YARP**
 
 ## Resilience and Secure Connections
 
 Incorporating **Polly**, a library for resilience and handling transient faults, the application:
 - **Polly Retry Policies**: Configures transient HTTP error management by retrying connections every 3 seconds, vital for ensuring uninterrupted service in a distributed system.
 
+## Simplified Deployment with Docker
+
+The application has been containerized using Docker, allowing for seamless deployment and management:
+- **Dockerized Services**: Each service now has its own Dockerfile, simplifying the build and deployment process.
+- **One-Step Deployment**: Launch all services with a single command `docker compose up -d`, which automatically sets up the entire infrastructure.
+
 ## Installation
 
-Follow these steps to deploy the project using Docker:
+To deploy this project, ensure Docker is installed on your machine. Simply run the following command to start all services:
 ```bash
-# Clone the repository
-git clone https://github.com/rcarlosjorge/DotNet-NextJS-Microservices.git
-# Navigate to each service directory for necessary configurations or initialization tasks.
-dotnet watch
-# Return to the root directory
-cd ..
-# Start the Docker containers from the root directory.
 docker compose up -d
