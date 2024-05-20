@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/AuctionService.csproj": {}
+    "/Users/carlosjorge/DotNet-Microservices/src/AuctionService/AuctionService.csproj": {}
   },
   "projects": {
-    "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/AuctionService.csproj": {
+    "/Users/carlosjorge/DotNet-Microservices/src/AuctionService/AuctionService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/AuctionService.csproj",
+        "projectUniqueName": "/Users/carlosjorge/DotNet-Microservices/src/AuctionService/AuctionService.csproj",
         "projectName": "AuctionService",
-        "projectPath": "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/AuctionService.csproj",
+        "projectPath": "/Users/carlosjorge/DotNet-Microservices/src/AuctionService/AuctionService.csproj",
         "packagesPath": "/Users/carlosjorge/.nuget/packages/",
-        "outputPath": "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/AuctionService/obj/",
+        "outputPath": "/Users/carlosjorge/DotNet-Microservices/src/AuctionService/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/carlosjorge/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/Contracts/Contracts.csproj": {
-                "projectPath": "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/Contracts/Contracts.csproj"
+              "/Users/carlosjorge/DotNet-Microservices/src/Contracts/Contracts.csproj": {
+                "projectPath": "/Users/carlosjorge/DotNet-Microservices/src/Contracts/Contracts.csproj"
               }
             }
           }
@@ -101,14 +101,14 @@
         }
       }
     },
-    "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/Contracts/Contracts.csproj": {
+    "/Users/carlosjorge/DotNet-Microservices/src/Contracts/Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/Contracts/Contracts.csproj",
+        "projectUniqueName": "/Users/carlosjorge/DotNet-Microservices/src/Contracts/Contracts.csproj",
         "projectName": "Contracts",
-        "projectPath": "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/Contracts/Contracts.csproj",
+        "projectPath": "/Users/carlosjorge/DotNet-Microservices/src/Contracts/Contracts.csproj",
         "packagesPath": "/Users/carlosjorge/.nuget/packages/",
-        "outputPath": "/Users/carlosjorge/Desktop/Build a Microservices app with .Net and NextJS from scratch/Carsties/src/Contracts/obj/",
+        "outputPath": "/Users/carlosjorge/DotNet-Microservices/src/Contracts/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/carlosjorge/.nuget/NuGet/NuGet.Config"
