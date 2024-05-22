@@ -15,11 +15,8 @@ public class BidsController : ControllerBase
     private readonly IPublishEndpoint _publishEndpoint;
     private readonly GrpcAuctionClient _grpcClient;
 
-    public BidsController(
-        IMapper mapper,
-        IPublishEndpoint publishEndpoint,
-        GrpcAuctionClient grpcClient
-    )
+    public BidsController(IMapper mapper, IPublishEndpoint publishEndpoint,
+        GrpcAuctionClient grpcClient)
     {
         _mapper = mapper;
         _publishEndpoint = publishEndpoint;
@@ -36,8 +33,7 @@ public class BidsController : ControllerBase
         {
             auction = _grpcClient.GetAuction(auctionId);
 
-            if (auction == null)
-                return BadRequest("Cannot accept bids on this auction at this time");
+            if (auction == null) return BadRequest("Cannot accept bids on this auction at this time");
         }
 
         if (auction.Seller == User.Identity.Name)
@@ -59,16 +55,15 @@ public class BidsController : ControllerBase
         else
         {
             var highBid = await DB.Find<Bid>()
-                .Match(a => a.AuctionId == auctionId)
-                .Sort(b => b.Descending(x => x.Amount))
-                .ExecuteFirstAsync();
+                        .Match(a => a.AuctionId == auctionId)
+                        .Sort(b => b.Descending(x => x.Amount))
+                        .ExecuteFirstAsync();
 
             if (highBid != null && amount > highBid.Amount || highBid == null)
             {
-                bid.BidStatus =
-                    amount > auction.ReservePrice
-                        ? BidStatus.Accepted
-                        : BidStatus.AcceptedBelowReserve;
+                bid.BidStatus = amount > auction.ReservePrice
+                    ? BidStatus.Accepted
+                    : BidStatus.AcceptedBelowReserve;
             }
 
             if (highBid != null && bid.Amount <= highBid.Amount)
@@ -89,7 +84,7 @@ public class BidsController : ControllerBase
     {
         var bids = await DB.Find<Bid>()
             .Match(a => a.AuctionId == auctionId)
-            .Sort(b => b.Descending(a => a.BidTime))
+            .Sort(b => b.Descending(a => a.BidDate))
             .ExecuteAsync();
 
         return bids.Select(_mapper.Map<BidDto>).ToList();

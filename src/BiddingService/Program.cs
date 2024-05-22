@@ -1,4 +1,5 @@
 using BiddingService;
+using Contracts;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MongoDB.Driver;
@@ -9,32 +10,25 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-
-builder.Services.AddMassTransit(x =>
+builder.Services.AddMassTransit(x => 
 {
     x.AddConsumersFromNamespaceContaining<AuctionCreatedConsumer>();
+
     x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("bids", false));
 
-    x.UsingRabbitMq(
-        (context, cfg) =>
-        {
-            cfg.Host(
-                builder.Configuration["RabbitMq:Host"],
-                "/",
-                host =>
-                {
-                    host.Username(builder.Configuration.GetValue("RabbitMq:Username", "guest"));
-                    host.Password(builder.Configuration.GetValue("RabbitMq:Password", "guest"));
-                }
-            );
-            cfg.ConfigureEndpoints(context);
-        }
-    );
-});
+    x.UsingRabbitMq((context, cfg) => 
+    {
+    cfg.Host(builder.Configuration["RabbitMq:Host"], "/", host =>
+    {
+        host.Username(builder.Configuration.GetValue("RabbitMq:Username", "guest"));
+        host.Password(builder.Configuration.GetValue("RabbitMq:Password", "guest"));
+    });
 
-builder
-    .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+        cfg.ConfigureEndpoints(context);
+    });
+});
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options => 
     {
         options.Authority = builder.Configuration["IdentityServiceUrl"];
         options.RequireHttpsMetadata = false;
@@ -50,16 +44,11 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-
 app.UseAuthorization();
 
 app.MapControllers();
 
-await DB.InitAsync(
-    "BidDb",
-    MongoClientSettings.FromConnectionString(
-        builder.Configuration.GetConnectionString("BidDbConnection")
-    )
-);
+await DB.InitAsync("BidDb", MongoClientSettings
+    .FromConnectionString(builder.Configuration.GetConnectionString("BidDbConnection")));
 
 app.Run();
