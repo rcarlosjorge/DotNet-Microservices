@@ -37,15 +37,15 @@ services:
       - Kestrel__Endpoints__Grpc__Url=http://+:7777
       - Kestrel__Endpoints__Grpc__Protocols=Http1
       - Kestrel__Endpoints__Grpc__Url=http://+:80
-    ports: 
-    - 7001:80
-    - 7777:7777
+    ports:
+      - 7001:80
+      - 7777:7777
     depends_on:
       - postgres
       - rabbitmq
   search-svc:
     image: carlospjorge/search-svc:latest
-    build: 
+    build:
       context: .
       dockerfile: src/SearchService/Dockerfile
     environment:
@@ -61,7 +61,7 @@ services:
       - rabbitmq
   identity-svc:
     image: carlospjorge/identity-svc:latest
-    build: 
+    build:
       context: .
       dockerfile: src/IdentityService/Dockerfile
     environment:
@@ -74,7 +74,7 @@ services:
       - postgres
   gateway-svc:
     image: carlospjorge/gateway-svc:latest
-    build: 
+    build:
       context: .
       dockerfile: src/GatewayService/Dockerfile
     environment:
@@ -84,7 +84,7 @@ services:
       - 6001:80
   bid-svc:
     image: carlospjorge/bid-svc:latest
-    build: 
+    build:
       context: .
       dockerfile: src/BiddingService/Dockerfile
     environment:
@@ -98,4 +98,17 @@ services:
       - 7003:80
     depends_on:
       - mongodb
+      - rabbitmq
+  notify-svc:
+    image: carlospjorge/notify-svc:latest
+    build:
+      context: .
+      dockerfile: src/NotificationService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - RabbitMq__Host=rabbitmq
+    ports:
+      - 7004:80
+    depends_on:
       - rabbitmq
