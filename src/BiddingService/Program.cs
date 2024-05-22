@@ -42,6 +42,9 @@ builder
         options.TokenValidationParameters.NameClaimType = "username";
     });
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddHostedService<CheckAuctionFinished>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
