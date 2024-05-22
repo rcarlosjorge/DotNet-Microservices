@@ -26,4 +26,4 @@ RUN dotnet publish -c Release -o /app/src/out
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/src/out .
-ENTRYPOINT [ "dotnet", "BiddingService.dll" ]
+ENTRYPOINT [ "dotnet", "NotificationService.dll" ]
