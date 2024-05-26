@@ -7,6 +7,8 @@ services:
       - 5432:5432
     volumes:
       - /var/lib/postresql/data
+    networks:
+      - backend-network
   mongodb:
     image: mongo
     environment:
@@ -16,11 +18,15 @@ services:
       - 27017:27017
     volumes:
       - /var/lib/mongodb/data
+    networks:
+      - backend-network
   rabbitmq:
     image: rabbitmq:3-management-alpine
     ports:
       - 5672:5672
       - 15672:15672
+    networks:
+      - backend-network
   auction-svc:
     image: carlospjorge/auction-svc:latest
     build:
@@ -43,6 +49,8 @@ services:
     depends_on:
       - postgres
       - rabbitmq
+    networks:
+      - backend-network
   search-svc:
     image: carlospjorge/search-svc:latest
     build:
@@ -59,6 +67,8 @@ services:
     depends_on:
       - mongodb
       - rabbitmq
+    networks:
+      - backend-network
   identity-svc:
     image: carlospjorge/identity-svc:latest
     build:
@@ -72,6 +82,8 @@ services:
       - 5000:80
     depends_on:
       - postgres
+    networks:
+      - backend-network
   gateway-svc:
     image: carlospjorge/gateway-svc:latest
     build:
@@ -82,6 +94,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - 6001:80
+    networks:
+      - backend-network
   bid-svc:
     image: carlospjorge/bid-svc:latest
     build:
@@ -99,6 +113,8 @@ services:
     depends_on:
       - mongodb
       - rabbitmq
+    networks:
+      - backend-network
   notify-svc:
     image: carlospjorge/notify-svc:latest
     build:
@@ -112,3 +128,9 @@ services:
       - 7004:80
     depends_on:
       - rabbitmq
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    external: true
