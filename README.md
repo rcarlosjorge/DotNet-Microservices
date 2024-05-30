@@ -15,6 +15,8 @@ The application leverages **Duende IdentityServer** for robust authentication an
 - **SearchService**: Utilizes MongoDB to efficiently handle complex queries for filtering and searching data.
 - **IdentityService**: Dedicated to managing user identities and access controls. This service interfaces with Duende IdentityServer and ASP.NET Identity to offer a seamless and secure user experience.
 - **GatewayService**: Acts as the primary point of entry for all client requests, routing them to the appropriate services through **YARP (Yet Another Reverse Proxy)**. This simplifies the architecture, enhances security, and facilitates load balancing by serving as a dynamic reverse proxy.
+- **BiddingService**: Manages the auction bidding processes, ensuring smooth and efficient operations.
+- **NotificationService**: Handles real-time user notifications and communication using **SignalR** for real-time web functionalities.
 
 ## Message Handling with RabbitMQ
 
@@ -32,10 +34,22 @@ The following entities enhance data integrity and manage communications securely
 
 These entities help handle scenarios of temporary service unavailability by managing incoming and outgoing messages through inbox and outbox patterns.
 
-## Planned Services
+## GRPC and Protobuf Integration
 
-- **BiddingService**: Will manage the auction bidding processes.
-- **NotificationService**: Aimed at handling real-time user notifications and communication.
+The project utilizes **gRPC** and **Protobuf** for efficient and high-performance communication between microservices:
+- **gRPC**: Provides a robust RPC framework for service-to-service communication.
+- **Protobuf**: Used for serializing structured data, ensuring fast and efficient communication between services.
+
+## Real-Time Communication with SignalR
+
+The **NotificationService** leverages **SignalR** to enable real-time communication:
+- **SignalR Integration**: Allows server-side code to push content to connected clients instantly.
+- **Real-Time Updates**: Ensures that users receive immediate notifications and updates, enhancing the user experience.
+
+## SSL Certificates with mkcert
+
+To ensure secure communication in local development, **mkcert** is used to generate SSL certificates:
+- **SSL Configuration**: mkcert allows for easy creation and management of local SSL certificates, enhancing security during development.
 
 ## Technologies Used
 
@@ -45,6 +59,10 @@ These entities help handle scenarios of temporary service unavailability by mana
 - **RabbitMQ**
 - **Docker**
 - **YARP**
+- **SignalR**
+- **gRPC**
+- **Protobuf**
+- **mkcert**
 
 ## Resilience and Secure Connections
 
@@ -57,8 +75,25 @@ The application has been containerized using Docker, allowing for seamless deplo
 - **Dockerized Services**: Each service now has its own Dockerfile, simplifying the build and deployment process.
 - **One-Step Deployment**: Launch all services with a single command `docker compose up -d`, which automatically sets up the entire infrastructure.
 
+### Docker Network Configuration
+
+To ensure seamless communication between the backend and frontend services, a custom Docker network is created. This network allows all services to communicate with each other efficiently. Additionally, some services are assigned static IP addresses to simplify their connection and ensure consistent network configurations.
+
+Here is an overview of the steps taken to configure the network:
+
+- **Creating the Network**: A Docker network named `my_microservices_network` is created to connect all services.
+- **Assigning Static IPs**: Certain services are given static IP addresses to make it easier to connect and manage them within the network.
+
+This setup ensures that all microservices can communicate with each other seamlessly, providing a robust and reliable infrastructure for the application.
+
 ## Installation
 
-To deploy this project, ensure Docker is installed on your machine. Simply run the following command to start all services:
-```bash
+To deploy this project, ensure Docker is installed on your machine. Follow these steps to build and start all services:
+
+1. Create a Docker network to facilitate communication between the backend and frontend services:
+   ```bash
+   docker network create my_microservices_network
+2. Build and start all services with the following commands:
+ ```bash
+docker compose build 
 docker compose up -d
