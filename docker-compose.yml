@@ -8,7 +8,8 @@ services:
     volumes:
       - /var/lib/postresql/data
     networks:
-      - backend-network
+      backend-network:
+        ipv4_address: 10.5.0.2
   mongodb:
     image: mongo
     environment:
@@ -19,14 +20,16 @@ services:
     volumes:
       - /var/lib/mongodb/data
     networks:
-      - backend-network
+      backend-network:
+        ipv4_address: 10.5.0.3
   rabbitmq:
     image: rabbitmq:3-management-alpine
     ports:
       - 5672:5672
       - 15672:15672
     networks:
-      - backend-network
+      backend-network:
+        ipv4_address: 10.5.0.4
   auction-svc:
     image: carlospjorge/auction-svc:latest
     build:
@@ -78,12 +81,12 @@ services:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - ConnectionStrings__DefaultConnection=Server=postgres:5432;User Id=postgres;Password=postgrespw;Database=identity
-    ports:
-      - 80:80
+      - VIRTUAL_HOST=id.carsties.com
     depends_on:
       - postgres
     networks:
-      - backend-network
+      backend-network:
+        ipv4_address: 10.5.0.200
   gateway-svc:
     image: carlospjorge/gateway-svc:latest
     build:
@@ -92,8 +95,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
-    ports:
-      - 6001:80
+      - ClientApp=http://app.carsties.com
+      - VIRTUAL_HOST=api.carsties.com
     networks:
       - backend-network
   bid-svc:
@@ -131,6 +134,18 @@ services:
     networks:
       - backend-network
 
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    ports:
+      - 80:80
+    networks:
+      - backend-network
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
 networks:
   backend-network:
     external: true
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
