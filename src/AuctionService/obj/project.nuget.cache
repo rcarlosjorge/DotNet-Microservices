@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ToBRTe37x0UCDkKLmthLd/YCjracypVPGyr3WMmGdBMx1O6Hn38GNaCOELb6uyxBIES5NqbyX8TvbRD4zOMQhQ==",
+  "dgSpecHash": "HlkpKY0wDGKhv9FA8N+wW+KJf2CGpYvs+WZVUSY8gp9pzhSyrGEk1Thj3EyavHqmTIqP4Sz6k6g0Hm/4K6IceA==",
   "success": true,
   "projectFilePath": "/Users/carlosjorge/DotNet-Microservices/src/AuctionService/AuctionService.csproj",
   "expectedPackageFiles": [
@@ -58,8 +58,8 @@
     "/Users/carlosjorge/.nuget/packages/microsoft.identitymodel.tokens/7.1.2/microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
     "/Users/carlosjorge/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/Users/carlosjorge/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
-    "/Users/carlosjorge/.nuget/packages/npgsql/8.0.2/npgsql.8.0.2.nupkg.sha512",
-    "/Users/carlosjorge/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.2/npgsql.entityframeworkcore.postgresql.8.0.2.nupkg.sha512",
+    "/Users/carlosjorge/.nuget/packages/npgsql/8.0.3/npgsql.8.0.3.nupkg.sha512",
+    "/Users/carlosjorge/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.4/npgsql.entityframeworkcore.postgresql.8.0.4.nupkg.sha512",
     "/Users/carlosjorge/.nuget/packages/rabbitmq.client/6.8.1/rabbitmq.client.6.8.1.nupkg.sha512",
     "/Users/carlosjorge/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "/Users/carlosjorge/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
